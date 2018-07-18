@@ -1,6 +1,5 @@
 ---
 applications:
-- name: netcore-banking-api
-  memory: 1024M
-  instances: 1
-  random-route: true
+- name: MyFirstWebApi
+  memory: 128M
+  timeout: 60

@@ -40,7 +40,11 @@ namespace TestAPI
      
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BankingContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));                        
+            //services.AddDbContext<BankingContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlConnection")));                        
+
+            var MySqlConnection = Environment.GetEnvironmentVariable("MySqlConnection");
+            services.AddDbContext<BankingContext>(options => options.UseMySql(MySqlConnection));
+
             services.AddScoped<ICustomerApplicationService, CustomerApplicationService>();
             services.AddScoped<IBankAccountApplicationService,BankAccountApplicationService>();
             services.AddScoped<ITransactionApplicationService, TransactionApplicationService>();
